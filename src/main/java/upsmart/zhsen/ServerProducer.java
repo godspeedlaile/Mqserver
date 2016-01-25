@@ -19,7 +19,8 @@ public class ServerProducer {
 		// TODO Auto-generated method stub
 
 		ConnectionFactory factory = new ConnectionFactory();
-		factory.setHost("localhost");
+		factory.setHost("192.168.88.132");
+		factory.setPort(5672);
 		Connection connection = factory.newConnection();
 		Channel channel = connection.createChannel();
 		
