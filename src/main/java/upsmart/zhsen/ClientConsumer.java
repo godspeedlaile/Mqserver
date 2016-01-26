@@ -1,6 +1,9 @@
 package upsmart.zhsen;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.TimeoutException;
 
 import com.rabbitmq.client.Channel;
@@ -21,12 +24,20 @@ public class ClientConsumer {
 	 * @throws InterruptedException 
 	 * @throws ConsumerCancelledException 
 	 * @throws ShutdownSignalException 
+	 * @throws URISyntaxException 
+	 * @throws NoSuchAlgorithmException 
+	 * @throws KeyManagementException 
 	 */
-	public static void main(String[] args) throws IOException, TimeoutException, ShutdownSignalException, ConsumerCancelledException, InterruptedException {
+	public static void main(String[] args) throws IOException, TimeoutException, ConsumerCancelledException, InterruptedException, KeyManagementException, NoSuchAlgorithmException, URISyntaxException {
 		// TODO Auto-generated method stub
 		ConnectionFactory factory = new ConnectionFactory();
 		factory.setHost("192.168.88.132");
 		factory.setPort(5672);
+		factory.setUsername("mq");
+		factory.setPassword("mq");
+//		factory.setVirtualHost("/");
+
+//		factory.setUri("amqp://mq:mq@192.168.88.132:5672/virtualHost");
 		Connection connection = factory.newConnection();
 		Channel channel = connection.createChannel();
 		
